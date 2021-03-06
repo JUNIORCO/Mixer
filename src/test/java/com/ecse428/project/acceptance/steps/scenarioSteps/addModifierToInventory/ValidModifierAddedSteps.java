@@ -10,9 +10,7 @@ import java.util.Map;
 
 import com.ecse428.project.acceptance.CucumberConfig;
 import com.ecse428.project.acceptance.TestContext;
-import com.ecse428.project.acceptance.steps.commonSteps.UserLoggedInSteps;
 import com.ecse428.project.model.Modifier;
-import com.ecse428.project.model.User;
 import com.ecse428.project.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,19 +40,8 @@ public class ValidModifierAddedSteps extends CucumberConfig {
     assertEquals(HttpStatus.OK, response.getStatusCode());
 
     // Select one
-    context.setChosen(response.getBody()[0]);
-    assertNotNull(context.getChosen());
-  }
-
-  @When("I confirm adding it to my inventory")
-  public void i_add_confirm_adding_it_to_my_inventory() {
-    // Send request
-    final String uri_req = "/api/user/{userId}/modifier/{modifierName}";
-    Map<String, String> params = new HashMap<String, String>();
-    params.put("userId", context.getUser().getId().toString());
-    params.put("modifierName", context.getChosen().getName());
-
-    context.setResponse(restTemplate.exchange(uri_req, HttpMethod.PUT, null, String.class, params));
+    context.setChosenModifier(response.getBody()[0]);
+    assertNotNull(context.getChosenModifier());
   }
 
   @Then("the system will add the modifier to my inventory")
@@ -68,6 +55,6 @@ public class ValidModifierAddedSteps extends CucumberConfig {
         params);
     assertEquals(HttpStatus.OK, response.getStatusCode());
 
-    assertTrue(Arrays.asList(response.getBody()).contains(context.getChosen()));
+    assertTrue(Arrays.asList(response.getBody()).contains(context.getChosenModifier()));
   }
 }

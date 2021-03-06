@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table
 public class Modifier {
   public enum ModifierType {
-    FORTIFIED_WINE, LIQUER, SYRUP, JUICE, SMOOTHING_AGENT
+    FORTIFIED_WINE, LIQUER, SYRUP, JUICE, SMOOTHING_AGENT, SODA
   }
 
   @Id

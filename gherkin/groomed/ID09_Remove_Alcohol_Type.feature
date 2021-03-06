@@ -7,7 +7,7 @@ Feature: Remove Alcohol Type From Inventory
 
     Background: User is logged in and has items in inventory
 
-        Given I am a user
+        Given I am a signed up for Mixer
         And I am logged in to Mixer
         And I have items in my inventory
 

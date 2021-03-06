@@ -7,7 +7,7 @@ Feature: Set Cocktail Strength
 
   Background: User is logged in and is prompted for cocktail strength
 
-    Given I am a user
+    Given I am a signed up for Mixer
     And I am logged in to Mixer
     And I am prompted to indicate my preferred cocktail alcohol strength in the recommender questionnaire
     And the options listed are

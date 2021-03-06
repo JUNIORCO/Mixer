@@ -40,8 +40,8 @@ public class InvalidModifierAddedSteps extends CucumberConfig {
     // Creating invalid modifier
     Modifier invaidModifier = new Modifier(TestContext.invalid_name, ModifierType.JUICE);
 
-    context.setChosen(invaidModifier);
-    assertNotNull(context.getChosen());
+    context.setChosenModifier(invaidModifier);
+    assertNotNull(context.getChosenModifier());
   }
 
   @Then("the system will notify me that the modifier is invalid")
@@ -60,7 +60,7 @@ public class InvalidModifierAddedSteps extends CucumberConfig {
     ResponseEntity<Modifier[]> response = restTemplate.exchange(uri_req, HttpMethod.GET, null, Modifier[].class,
         params);
     assertEquals(HttpStatus.OK, response.getStatusCode());
-    assertFalse(Arrays.asList(response.getBody()).contains(context.getChosen()));
+    assertFalse(Arrays.asList(response.getBody()).contains(context.getChosenModifier()));
 
   }
 

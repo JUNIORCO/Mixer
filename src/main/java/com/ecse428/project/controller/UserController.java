@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -45,4 +46,10 @@ public class UserController {
     public ResponseEntity<String> putAlcoholInInventory(@PathVariable int userId, @PathVariable String alcoholName) {
         return userService.putAlcoholInInventory(userId, alcoholName);
     }
+
+    @DeleteMapping("alcohol/{alcoholName}")
+    public ResponseEntity<String> deleteAlcoholInInventory(@PathVariable int userId, @PathVariable String alcoholName){
+        return userService.deleteAlcoholInInventory(userId, alcoholName);
+    }
+    
 }

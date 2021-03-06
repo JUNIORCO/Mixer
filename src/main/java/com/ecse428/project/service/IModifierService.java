@@ -1,7 +1,6 @@
 package com.ecse428.project.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.ecse428.project.model.Modifier;
 import com.ecse428.project.repository.ModifierRepository;

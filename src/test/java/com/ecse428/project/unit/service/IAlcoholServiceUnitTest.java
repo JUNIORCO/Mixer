@@ -5,7 +5,6 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
 import com.ecse428.project.model.Alcohol;
-import com.ecse428.project.model.Modifier;
 import com.ecse428.project.repository.AlcoholRepository;
 import com.ecse428.project.service.AlcoholService;
 import com.ecse428.project.service.IAlcoholService;
@@ -78,10 +77,5 @@ public class IAlcoholServiceUnitTest {
         }
 
         assertFalse(found);
-    }
-
-    @Test
-    public void sanityCheck() {
-        assertTrue(true);
     }
 }

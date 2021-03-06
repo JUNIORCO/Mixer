@@ -15,9 +15,13 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	implementation 'com.auth0:java-jwt:3.4.0'
 	runtimeOnly 'org.postgresql:postgresql'
 	testImplementation 'io.rest-assured:rest-assured:4.3.3'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'io.cucumber:cucumber-java:6.8.1'
 	testImplementation 'io.cucumber:cucumber-junit:6.8.1'
 	testImplementation 'io.cucumber:cucumber-spring:6.9.1'
@@ -31,7 +35,8 @@ dependencies {
 test {
 	filter {
     includeTestsMatching "*UnitTest"
-		//includeTestsMatching "Ecse428ProjectCucumberTestsRunner"
+		includeTestsMatching "*IntegrationTest"
+		includeTestsMatching "Ecse428ProjectCucumberTestsRunner"
   }
 	testLogging {
     events "passed", "skipped", "failed"

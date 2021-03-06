@@ -27,7 +27,7 @@ Feature: Login with credentials
     And a new login token will not be created
     And the system will return the error 'Invalid credentials. Please try again.'
 
-  Scenario: Empty username or password (Error Flow)
+  Scenario: Empty email or password (Error Flow)
 
     When I enter an empty <cred>
       | cred     |

@@ -77,9 +77,4 @@ public class IModifierServiceUnitTest {
 
         assertFalse(found);
     }
-
-    @Test
-    public void sanityCheck() {
-        assertTrue(true);
-    }
 }

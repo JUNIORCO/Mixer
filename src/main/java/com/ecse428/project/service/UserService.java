@@ -4,6 +4,7 @@ import java.util.Set;
 
 import com.ecse428.project.model.Alcohol;
 import com.ecse428.project.model.Modifier;
+import com.ecse428.project.model.User;
 
 import org.springframework.http.ResponseEntity;
 
@@ -15,4 +16,9 @@ public interface UserService {
     public Set<Alcohol> getAlcoholInInventory(long userId);
 
     public ResponseEntity<String> putAlcoholInInventory(long userId, String alcoholName);
+
+    public ResponseEntity<String> postSignup(User user);
+
+    public ResponseEntity<String> deleteAlcoholInInventory(long userId, String alcoholName);
+
 }
