@@ -17,15 +17,11 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
@@ -56,39 +52,24 @@ public class GenerateCocktailControllerIntegrationTest {
     @WithMockUser
     public void givenInventoryAndPreferences_whenGetCocktails_thenReturnJsonArray() throws Exception {
 
-//        Alcohol vodka = new Alcohol("Vodka");
-//        Modifier redBull = new Modifier("RedBull", Modifier.ModifierType.SODA);
-//
-//        List<Alcohol> alcohols = Arrays.asList(vodka);
-//        List<Modifier> modifiers = Arrays.asList(redBull);
-//
-//        Cocktail vodka_redBull = new Cocktail("Vodka RedBull", alcohols, modifiers);
-//        List<Cocktail> allCocktails = Arrays.asList(vodka_redBull);
-//
-////        given(alcoholService.getAlcohol()).willReturn(alcohols);
-////        given(modifierService.getModifiers()).willReturn(modifiers);
-//        given(cocktailService.getCocktail()).willReturn(allCocktails);
-//
-//        mvc.perform(MockMvcRequestBuilders
-//                .get("/api/cocktail")
-//                .contentType(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isOk());
-////                .andExpect(jsonPath("$", hasSize(1)))
-////                .andExpect(jsonPath("$[0].name", is(vodka_redBull.getName())));
+        Alcohol vodka = new Alcohol("Vodka");
+        Modifier redBull = new Modifier("RedBull", Modifier.ModifierType.SODA);
 
-        String uri_req = "/api/cocktail";
+        List<Alcohol> alcohols = Arrays.asList(vodka);
+        List<Modifier> modifiers = Arrays.asList(redBull);
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+        Cocktail vodka_redBull = new Cocktail("Vodka RedBull", alcohols, modifiers);
+        List<Cocktail> allCocktails = Arrays.asList(vodka_redBull);
 
-        MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
-        map.add("cName", "");
-        map.add("alcohol", "bourbon");
-        map.add("modifier", "sugar syrup");
-        map.add("tasteType", "");
-        map.add("strengthType", "");
-        map.add("servingSize", "");
+//        given(alcoholService.getAlcohol()).willReturn(alcohols);
+//        given(modifierService.getModifiers()).willReturn(modifiers);
+        given(cocktailService.getCocktail()).willReturn(allCocktails);
 
-        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
+        mvc.perform(MockMvcRequestBuilders
+                .get("/api/cocktail")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+//                .andExpect(jsonPath("$", hasSize(1)))
+//                .andExpect(jsonPath("$[0].name", is(vodka_redBull.getName())));
     }
 }
